@@ -1,27 +1,27 @@
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\CalendarioFacadeLocal.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\TratamientoFacadeLocal.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\dominio\Paciente.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\CitaFacade.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\CitaFacadeLocal.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\DoctorFacade.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\HistorialFacadeLocal.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\dominio\Tratamiento.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\ProductoFacade.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\InventarioFacade.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\DoctorFacadeLocal.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\dominio\Cita.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\mx\com\sga\dentalControl\JAXRSConfiguration.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\dominio\Inventario.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\dominio\Doctor.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\InventarioFacadeLocal.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\PacienteFacadeLocal.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\CalendarioFacade.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\HistorialFacade.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\dominio\Historial.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\AbstractFacade.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\PacienteFacade.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\dominio\Calendario.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\dominio\Producto.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\ProductoFacadeLocal.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\mx\com\sga\dentalControl\resources\JavaEE8Resource.java
-D:\Documentos\UDLA\Semestre_6\DISEÑO Y ARQUITECTURA DE SOFTWARE\PROGRESO 1\PROYECTOS JEE\dentalControl\src\main\java\infraestructura\TratamientoFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\DoctorFacadeLocal.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\ProductoFacadeLocal.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\dominio\Producto.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\CalendarioFacadeLocal.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\HistorialFacadeLocal.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\TratamientoFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\dominio\Doctor.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\dominio\Cita.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\CitaFacadeLocal.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\ProductoFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\InventarioFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\PacienteFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\dominio\Tratamiento.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\dominio\Inventario.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\InventarioFacadeLocal.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\dominio\Calendario.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\DoctorFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\CitaFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\dominio\Historial.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\mx\com\sga\dentalControl\JAXRSConfiguration.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\HistorialFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\mx\com\sga\dentalControl\resources\JavaEE8Resource.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\TratamientoFacadeLocal.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\PacienteFacadeLocal.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\AbstractFacade.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\dominio\Paciente.java
+D:\6to semestre\Diseño y Arquitectura\Proyecto final\DentalControlJEE\src\main\java\infraestructura\CalendarioFacade.java

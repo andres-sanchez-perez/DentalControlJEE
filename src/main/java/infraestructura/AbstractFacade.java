@@ -9,7 +9,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author ERDE
+ * @author ERDE, Pipe
  */
 public abstract class AbstractFacade<T> {
 

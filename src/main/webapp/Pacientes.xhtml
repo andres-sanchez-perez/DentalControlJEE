@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Pacientes de la clinica</title>
+    </h:head>
+    <h:body>
+
+        <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+            <f:facet name="start">
+                <h:graphicImage library="images" name="ajaxloading.gif" />
+            </f:facet>
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+        <h:form prependId="false" id="form">
+
+            <p:growl id="messages" showDetail="true" />
+            <p:messages />
+
+            <p:dataTable 
+                id="pacientes" 
+                var="paciente" 
+                value="#{PacienteBean.pacientes}" 
+                editable="true" 
+                rowKey="#{paciente.idPaciente}"
+                selection="#{PacienteBean.pacienteSeleccionado}" 
+                selectionMode="single">
+
+                <f:facet name="header">  
+                    Lista de Pacientes  
+                </f:facet>
+
+                <p:column headerText="Nombre">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{paciente.nombre}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{paciente.nombre}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Apellido">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{paciente.apellido}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{paciente.apellido}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Cedula">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{paciente.cedula}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{paciente.cedula}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Telefono Celular">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{paciente.numCelular}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{paciente.numCelular}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Telefono Fijo">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{paciente.numFijo}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{paciente.numFijo}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Direccion">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{paciente.direccion}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{paciente.direccion}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Genero">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{paciente.genero}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{paciente.genero}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <f:facet name="footer">
+                    <p:commandButton value="Regresar" action="Index" />
+                    <p:spacer height="5px;"/>
+                    <p:commandButton value="Agregar" actionListener="#{PacienteBean.reiniciarPacienteSeleccionado}" oncomplete="PF('personaDialogo').show();" update="pacientes">
+                        <p:ajax event="dialogReturn" update="pacientes"/>
+                    </p:commandButton>
+                </f:facet>
+
+                <p:column headerText="Opciones" style="width:50px">
+                    <p:rowEditor />
+                </p:column>
+
+                <p:ajax event="rowEdit" listener="#{PacienteBean.editListener}">
+                </p:ajax>
+            </p:dataTable>
+
+
+
+            <p:contextMenu for="pacientes">
+                <p:menuitem value="Eliminar" update="pacientes" icon="ui-icon-close" actionListener="#{PacienteBean.eliminarPaciente}" ajax="false"/>
+            </p:contextMenu>
+        </h:form>
+
+        <h:form id="dialogoForm" prependId="false">
+            <p:dialog header="Agregar Persona" widgetVar="personaDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="personaDetalle" style="text-align:center;">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="Nombre" />
+                        <h:inputText value="#{PacienteBean.pacienteSeleccionado.nombre}" />
+
+                        <h:outputText value="Apellido:" />
+                        <h:inputText value="#{PacienteBean.pacienteSeleccionado.apellido}" />
+                        
+                        <h:outputText value="Cedula" />
+                        <h:inputText value="#{PacienteBean.pacienteSeleccionado.cedula}" />
+                        
+                        <h:outputText value="Numero Celular" />
+                        <h:inputText value="#{PacienteBean.pacienteSeleccionado.numCelular}" />
+                        
+                        <h:outputText value="Numero Fijo" />
+                        <h:inputText value="#{PacienteBean.pacienteSeleccionado.numFijo}" />
+                        
+                        <h:outputText value="Direccion" />
+                        <h:inputText value="#{PacienteBean.pacienteSeleccionado.direccion}" />
+                        
+                        <h:outputText value="Genero" />
+                        <h:selectOneMenu value="#{PacienteBean.pacienteSeleccionado.genero}">
+                                <f:selectItem itemValue="Masculino" itemLabel="Masculino" />
+                                <f:selectItem itemValue="Femenino" itemLabel="Femenino" />
+                        </h:selectOneMenu>
+
+
+                        <f:facet name="footer">
+                            <h:commandButton value="Agregar" actionListener="#{PacienteBean.agregarPaciente}" />
+                        </f:facet>
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+    </h:body>
+
+</html>
+

@@ -47,33 +47,33 @@ public class Paciente implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "nombre")
+    @Column(name = "Nombre")
     private String nombre;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "apellido")
+    @Column(name = "Apellido")
     private String apellido;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
-    @Column(name = "cedula")
+    @Column(name = "Cedula")
     private String cedula;
     @Size(max = 15)
-    @Column(name = "numCelular")
+    @Column(name = "NumCelular")
     private String numCelular;
     @Size(max = 15)
-    @Column(name = "numFijo")
+    @Column(name = "NumFijo")
     private String numFijo;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "direccion")
+    @Column(name = "DirDomicilio")
     private String direccion;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "genero")
-    private int genero;
+    @Column(name = "Genero")
+    private String genero;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaciente")
     private List<Historial> historialList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPaciente")
@@ -86,7 +86,7 @@ public class Paciente implements Serializable {
         this.idPaciente = idPaciente;
     }
 
-    public Paciente(Integer idPaciente, String nombre, String apellido, String cedula, String direccion, int genero) {
+    public Paciente(Integer idPaciente, String nombre, String apellido, String cedula, String direccion, String genero) {
         this.idPaciente = idPaciente;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -151,11 +151,11 @@ public class Paciente implements Serializable {
         this.direccion = direccion;
     }
 
-    public int getGenero() {
+    public String getGenero() {
         return genero;
     }
 
-    public void setGenero(int genero) {
+    public void setGenero(String genero) {
         this.genero = genero;
     }
 

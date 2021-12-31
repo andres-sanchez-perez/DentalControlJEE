@@ -11,11 +11,12 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author ERDE
+ * @author ERDE,Pipe
  */
 @Stateless
 public class DoctorFacade extends AbstractFacade<Doctor> implements DoctorFacadeLocal {
 
+    
     @PersistenceContext(unitName = "my_persistence_unit")
     private EntityManager em;
 
@@ -23,7 +24,7 @@ public class DoctorFacade extends AbstractFacade<Doctor> implements DoctorFacade
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
     public DoctorFacade() {
         super(Doctor.class);
     }

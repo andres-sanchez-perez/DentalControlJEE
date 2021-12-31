@@ -27,7 +27,7 @@ import javax.validation.constraints.Size;
 @Table(name = "doctor")
 @NamedQueries({
     @NamedQuery(name = "Doctor.findAll", query = "SELECT d FROM Doctor d"),
-    @NamedQuery(name = "Doctor.findByIdDoctor", query = "SELECT d FROM Doctor d WHERE d.idDoctor = :idDoctor"),
+    @NamedQuery(name = "Doctor.findByIdDoctor", query = "SELECT d FROM Doctor d WHERE d.idDoctor = :id_doctor"),
     @NamedQuery(name = "Doctor.findByNombre", query = "SELECT d FROM Doctor d WHERE d.nombre = :nombre"),
     @NamedQuery(name = "Doctor.findByApellido", query = "SELECT d FROM Doctor d WHERE d.apellido = :apellido"),
     @NamedQuery(name = "Doctor.findByEspecialidad", query = "SELECT d FROM Doctor d WHERE d.especialidad = :especialidad")})
@@ -42,17 +42,17 @@ public class Doctor implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "nombre")
+    @Column(name = "Nombre")
     private String nombre;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(name = "apellido")
+    @Column(name = "Apellido")
     private String apellido;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "especialidad")
+    @Column(name = "Especialidad")
     private String especialidad;
     @ManyToMany(mappedBy = "doctorList")
     private List<Calendario> calendarioList;

@@ -4,7 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import dominio.Doctor;
-import Eis.DoctorDao;
+import infraestructura.DoctorFacadeLocal;
 /**
  *
  * @author andre
@@ -12,31 +12,31 @@ import Eis.DoctorDao;
 @Stateless
 public class DoctorServiceImpl implements DoctorService, DoctorServiceRemote {
         @Inject
-	private DoctorDao doctorDao;
+	private DoctorFacadeLocal doctorFacade;
 
         @Override
 	public List<Doctor> listarDoctores() {
-		return doctorDao.findAllDoctores();
+		return doctorFacade.findAll();
 	}
 
         @Override
 	public Doctor encontrarDoctorPorId(Doctor doctor) {
-		return doctorDao.findDoctorById(doctor);
+		return doctorFacade.find(doctor);
 	}
 
 
         @Override
 	public void registrarDoctor(Doctor doctor) {
-		doctorDao.insertDoctor(doctor);
+		doctorFacade.create(doctor);
 	}
 
         @Override
 	public void modificarDoctor(Doctor doctor) {
-		doctorDao.updateDoctor(doctor);
+		doctorFacade.edit(doctor);
 	}
 
         @Override
 	public void eliminarDoctor(Doctor doctor) {
-		doctorDao.deleteDoctor(doctor);
+		doctorFacade.remove(doctor);
 	}    
 }

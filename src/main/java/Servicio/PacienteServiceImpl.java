@@ -4,7 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import dominio.Paciente;
-import Eis.PacienteDao;
+import infraestructura.PacienteFacadeLocal;
 /**
  *
  * @author andre
@@ -12,31 +12,31 @@ import Eis.PacienteDao;
 @Stateless
 public class PacienteServiceImpl implements PacienteService, PacienteServiceRemote {
         @Inject
-	private PacienteDao pacienteDao;
+	private PacienteFacadeLocal pacienteFacade;
 
         @Override
 	public List<Paciente> listarPacientes() {
-		return pacienteDao.findAllPacientes();
+		return pacienteFacade.findAll();
 	}
 
         @Override
 	public Paciente encontrarPacientePorId(Paciente paciente) {
-		return pacienteDao.findPacienteById(paciente);
+		return pacienteFacade.find(paciente);
 	}
 
 
         @Override
 	public void registrarPaciente(Paciente paciente) {
-		pacienteDao.insertPaciente(paciente);
+		pacienteFacade.create(paciente);
 	}
 
         @Override
 	public void modificarPaciente(Paciente paciente) {
-		pacienteDao.updatePaciente(paciente);
+		pacienteFacade.edit(paciente);
 	}
 
         @Override
 	public void eliminarPaciente(Paciente paciente) {
-		pacienteDao.deletePaciente(paciente);
+		pacienteFacade.remove(paciente);
 	}    
 }

@@ -4,7 +4,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import dominio.Doctor;
-import Eis.DoctorDao;
+import infraestructura.DoctorDao;
 /**
  *
  * @author andre

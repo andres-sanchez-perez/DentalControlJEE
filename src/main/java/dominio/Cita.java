@@ -62,8 +62,7 @@ public class Cita implements Serializable {
     @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente")
     @ManyToOne(optional = false)
     private Paciente idPaciente;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCita")
-    private List<Tratamiento> tratamientoList;
+    
 
     public Cita() {
     }
@@ -119,13 +118,7 @@ public class Cita implements Serializable {
         this.idPaciente = idPaciente;
     }
 
-    public List<Tratamiento> getTratamientoList() {
-        return tratamientoList;
-    }
-
-    public void setTratamientoList(List<Tratamiento> tratamientoList) {
-        this.tratamientoList = tratamientoList;
-    }
+    
 
     @Override
     public int hashCode() {

@@ -6,9 +6,7 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +16,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -34,7 +31,6 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Tratamiento.findByIdTratamiento", query = "SELECT t FROM Tratamiento t WHERE t.idTratamiento = :idTratamiento"),
     @NamedQuery(name = "Tratamiento.findByNombre", query = "SELECT t FROM Tratamiento t WHERE t.nombre = :nombre"),
     @NamedQuery(name = "Tratamiento.findByTipo", query = "SELECT t FROM Tratamiento t WHERE t.tipo = :tipo"),
-    @NamedQuery(name = "Tratamiento.findByConsentimiento", query = "SELECT t FROM Tratamiento t WHERE t.consentimiento = :consentimiento"),
     @NamedQuery(name = "Tratamiento.findByPresupuesto", query = "SELECT t FROM Tratamiento t WHERE t.presupuesto = :presupuesto")})
 public class Tratamiento implements Serializable {
 
@@ -52,10 +48,6 @@ public class Tratamiento implements Serializable {
     @Size(max = 50)
     @Column(name = "tipo")
     private String tipo;
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "consentimiento")
-    private short consentimiento;
     @Basic(optional = false)
     @NotNull
     @Column(name = "Fecha")
@@ -80,7 +72,6 @@ public class Tratamiento implements Serializable {
     public Tratamiento(Integer idTratamiento, String nombre, short consentimiento, double presupuesto) {
         this.idTratamiento = idTratamiento;
         this.nombre = nombre;
-        this.consentimiento = consentimiento;
         this.presupuesto = presupuesto;
     }
 
@@ -106,14 +97,6 @@ public class Tratamiento implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public short getConsentimiento() {
-        return consentimiento;
-    }
-
-    public void setConsentimiento(short consentimiento) {
-        this.consentimiento = consentimiento;
     }
 
     public double getPresupuesto() {

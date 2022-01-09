@@ -10,6 +10,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,6 +20,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -35,26 +38,42 @@ public class Inventario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "id_inventario")
     private Integer idInventario;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "cantidadActual")
+    @Size(min = 1, max = 45)
+    @Column(name = "Nombre")
+    private String nombre;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "Precio")
+    private double precio;
+    @Size(max = 45)
+    @Column(name = "Tipo")
+    private String tipo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "CantidadActual")
     private int cantidadActual;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "cantidadMinima")
+    @Column(name = "CantidadMinima")
     private int cantidadMinima;
-    @Column(name = "prioridad")
+    @Column(name = "Prioridad")
     private Integer prioridad;
+    /*
     @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")
     @ManyToOne
     private Producto idProducto;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idInventario")
-    private List<Tratamiento> tratamientoList;
-
+    */
+    @Column(name = "CantidadMaxima")
+    private int cantidadMaxima;
+   
+    
     public Inventario() {
     }
 
@@ -62,10 +81,15 @@ public class Inventario implements Serializable {
         this.idInventario = idInventario;
     }
 
-    public Inventario(Integer idInventario, int cantidadActual, int cantidadMinima) {
+    public Inventario(Integer idInventario, String nombre, double precio, String tipo ,int cantidadActual) {
         this.idInventario = idInventario;
+        this.nombre=nombre;
+        this.precio=precio;
+        this.tipo=tipo;
         this.cantidadActual = cantidadActual;
-        this.cantidadMinima = cantidadMinima;
+        setCantidadMaxima(cantidadActual);
+        setCantidadMinima();
+        setPrioridad();
     }
 
     public Integer getIdInventario() {
@@ -76,6 +100,30 @@ public class Inventario implements Serializable {
         this.idInventario = idInventario;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
     public int getCantidadActual() {
         return cantidadActual;
     }
@@ -83,23 +131,58 @@ public class Inventario implements Serializable {
     public void setCantidadActual(int cantidadActual) {
         this.cantidadActual = cantidadActual;
     }
+    
+    public void actualizarCantidades(int cantidad, int selector){
+        if(selector == 1){
+            this.cantidadActual += cantidad;
+            if(cantidadActual > cantidadMaxima){
+                setCantidadMaxima(cantidadActual);
+            }
+            setPrioridad();
+        }
+        else if(selector == 2){
+            if(cantidad <= cantidadActual){
+                this.cantidadActual -= cantidad;
+            }
+            setPrioridad();
+        }
+    }
+    
+    public int getCantidadMaxima() {
+        return cantidadMaxima;
+    }
+
+    public void setCantidadMaxima(int CantMax) {
+        if(getCantidadActual()>this.cantidadMaxima){
+            this.cantidadMaxima = CantMax;
+            setCantidadMinima();
+        }
+    }
 
     public int getCantidadMinima() {
         return cantidadMinima;
     }
 
-    public void setCantidadMinima(int cantidadMinima) {
-        this.cantidadMinima = cantidadMinima;
+    public void setCantidadMinima() {
+        this.cantidadMinima =this.cantidadActual/2;
     }
 
     public Integer getPrioridad() {
         return prioridad;
     }
 
-    public void setPrioridad(Integer prioridad) {
-        this.prioridad = prioridad;
+    public void setPrioridad() {
+        double PrioL=cantidadMaxima*0.75,CantAc=cantidadActual;
+        
+        if(cantidadActual<=cantidadMaxima &&CantAc>PrioL){
+            prioridad = 3;
+        }else if(CantAc<PrioL&&cantidadActual>cantidadMinima){
+            prioridad = 2;
+        }else{
+            prioridad = 1;
+        }
     }
-
+/*
     public Producto getIdProducto() {
         return idProducto;
     }
@@ -107,15 +190,8 @@ public class Inventario implements Serializable {
     public void setIdProducto(Producto idProducto) {
         this.idProducto = idProducto;
     }
-
-    public List<Tratamiento> getTratamientoList() {
-        return tratamientoList;
-    }
-
-    public void setTratamientoList(List<Tratamiento> tratamientoList) {
-        this.tratamientoList = tratamientoList;
-    }
-
+*/
+    
     @Override
     public int hashCode() {
         int hash = 0;

@@ -9,9 +9,54 @@
 
     <h:head>
         <title>Pacientes de la clinica</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+        <style type="text/css">
+            .ok td{
+                background-color: green;
+                color:white;
+            }
+            
+            .medium td{
+                background-color: yellow;
+                color:black;
+            }
+            .bad td{
+                background-color: red;
+                color:white;
+            }
+        </style>
     </h:head>
     <h:body>
-
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="Index.xhtml">Dental Control</a>
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Pacientes
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="Pacientes.xhtml">Ver Pacientes</a></li>
+                  <li><a class="dropdown-item" href="Historiales.xhtml">Ver Historiales Creados</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Doctores
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="Doctores.xhtml">Ver Doctores</a></li>
+                  <li><a class="dropdown-item" href="RepUsInventario.xhtml">Reponer o Usar elementos del Inventario</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="Inventario.xhtml">Ver Inventario</a></li>
+                  <li><a class="dropdown-item" href="#">Crear Producto</a></li>
+                </ul>
+            </div>
+        </nav>
         <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
             <f:facet name="start">
                 <h:graphicImage library="images" name="ajaxloading.gif" />
@@ -25,7 +70,7 @@
 
             <p:growl id="messages" showDetail="true" />
             <p:messages />
-
+            
             <p:dataTable 
                 id="pacientes" 
                 var="paciente" 
@@ -35,7 +80,7 @@
                 selection="#{PacienteBean.pacienteSeleccionado}" 
                 selectionMode="single">
 
-                <f:facet name="header">  
+                <f:facet  name="header">  
                     Lista de Pacientes  
                 </f:facet>
 
@@ -126,11 +171,6 @@
                 </p:ajax>
             </p:dataTable>
 
-
-
-            <p:contextMenu for="pacientes">
-                <p:menuitem value="Eliminar" update="pacientes" icon="ui-icon-close" actionListener="#{PacienteBean.eliminarPaciente}" ajax="false"/>
-            </p:contextMenu>
         </h:form>
 
         <h:form id="dialogoForm" prependId="false">
@@ -170,6 +210,7 @@
                 </p:outputPanel>
             </p:dialog>
         </h:form>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     </h:body>
 
 </html>

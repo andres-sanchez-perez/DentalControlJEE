@@ -5,6 +5,7 @@
 package dominio;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -57,16 +58,17 @@ public class Tratamiento implements Serializable {
     private short consentimiento;
     @Basic(optional = false)
     @NotNull
+    @Column(name = "Fecha")
+    private Date fecha;
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "presupuesto")
     private double presupuesto;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idTratamiento")
-    private List<Historial> historialList;
-    @JoinColumn(name = "id_cita", referencedColumnName = "id_cita")
+    @JoinColumn(name = "id_historial", referencedColumnName = "id_historial")
     @ManyToOne(optional = false)
-    private Cita idCita;
-    @JoinColumn(name = "id_inventario", referencedColumnName = "id_inventario")
-    @ManyToOne(optional = false)
-    private Inventario idInventario;
+    private Historial idHistorial;
+    
+    
 
     public Tratamiento() {
     }
@@ -122,29 +124,23 @@ public class Tratamiento implements Serializable {
         this.presupuesto = presupuesto;
     }
 
-    public List<Historial> getHistorialList() {
-        return historialList;
+    public Historial getIdHistorial() {
+        return idHistorial;
     }
 
-    public void setHistorialList(List<Historial> historialList) {
-        this.historialList = historialList;
+    public void setIdHistorial(Historial idHistorial) {
+        this.idHistorial = idHistorial;
     }
 
-    public Cita getIdCita() {
-        return idCita;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public void setIdCita(Cita idCita) {
-        this.idCita = idCita;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
-    public Inventario getIdInventario() {
-        return idInventario;
-    }
-
-    public void setIdInventario(Inventario idInventario) {
-        this.idInventario = idInventario;
-    }
+    
 
     @Override
     public int hashCode() {

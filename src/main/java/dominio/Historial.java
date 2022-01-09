@@ -5,7 +5,9 @@
 package dominio;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -37,9 +40,8 @@ public class Historial implements Serializable {
     @JoinColumn(name = "id_paciente", referencedColumnName = "id_paciente")
     @ManyToOne(optional = false)
     private Paciente idPaciente;
-    @JoinColumn(name = "id_tratamiento", referencedColumnName = "id_tratamiento")
-    @ManyToOne(optional = false)
-    private Tratamiento idTratamiento;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idHistorial")
+    private List<Tratamiento> tratamientosList;
 
     public Historial() {
     }
@@ -64,13 +66,15 @@ public class Historial implements Serializable {
         this.idPaciente = idPaciente;
     }
 
-    public Tratamiento getIdTratamiento() {
-        return idTratamiento;
+    public List<Tratamiento> getTratamientosList() {
+        return tratamientosList;
     }
 
-    public void setIdTratamiento(Tratamiento idTratamiento) {
-        this.idTratamiento = idTratamiento;
+    public void setTratamientosList(List<Tratamiento> tratamientosList) {
+        this.tratamientosList = tratamientosList;
     }
+
+   
 
     @Override
     public int hashCode() {

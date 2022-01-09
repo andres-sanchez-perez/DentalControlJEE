@@ -42,17 +42,18 @@ public class Producto implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
-    @Column(name = "nombre")
+    @Column(name = "Nombre")
     private String nombre;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "precio")
+    @Column(name = "Precio")
     private double precio;
     @Size(max = 45)
-    @Column(name = "tipo")
+    @Column(name = "Tipo")
     private String tipo;
+    /*
     @OneToMany(mappedBy = "idProducto")
-    private List<Inventario> inventarioList;
+    private List<Inventario> inventarioList;*/
 
     public Producto() {
     }
@@ -98,7 +99,7 @@ public class Producto implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+/*
     public List<Inventario> getInventarioList() {
         return inventarioList;
     }
@@ -106,7 +107,7 @@ public class Producto implements Serializable {
     public void setInventarioList(List<Inventario> inventarioList) {
         this.inventarioList = inventarioList;
     }
-
+*/
     @Override
     public int hashCode() {
         int hash = 0;

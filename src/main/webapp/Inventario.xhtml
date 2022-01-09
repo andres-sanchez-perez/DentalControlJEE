@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>inventario de la clinica</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"/>
+        <style type="text/css">
+            .ok td{
+                background-color: green;
+                color:white;
+            }
+            
+            .medium td{
+                background-color: yellow;
+                color:black;
+            }
+            .bad td{
+                background-color: red;
+                color:white;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="Index.xhtml">Dental Control</a>
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Pacientes
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="Pacientes.xhtml">Ver Pacientes</a></li>
+                  <li><a class="dropdown-item" href="Historiales.xhtml">Ver Historiales Creados</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Doctores
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="Doctores.xhtml">Ver Doctores</a></li>
+                  <li><a class="dropdown-item" href="#">Crear Pacientes</a></li>
+                </ul>
+            </div>
+            <div class="dropdown">
+                <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="Inventario.xhtml">Ver Inventario</a></li>
+                  <li><a class="dropdown-item" href="RepUsInventario.xhtml">Reponer o Usar elementos del Inventario</a></li>
+                </ul>
+            </div>
+        </nav>
+        <p:ajaxStatus style="width:16px;height:16px;" id="ajaxStatusPanel">
+            <f:facet name="start">
+                <h:graphicImage library="images" name="ajaxloading.gif" />
+            </f:facet>
+            <f:facet name="complete">
+                <h:outputText value="" />
+            </f:facet>
+        </p:ajaxStatus>
+
+        <h:outputText style="font-weight: bold; font-size: 20px;" id="message" value="#{InventarioBean.message}">
+        </h:outputText>
+        
+        <h:outputText >
+            
+        </h:outputText>
+        
+        <h:form prependId="false" id="form">
+
+            <p:growl id="messages" showDetail="true" />
+            <p:messages />
+            
+            <p:dataTable 
+                
+                rowStyleClass="#{inventario.prioridad == 3 ? 'ok' : inventario.prioridad == 2 ? 'medium' : 'bad'}"
+                id="inventarios" 
+                var="inventario" 
+                value="#{InventarioBean.inventarios}" 
+                editable="true" 
+                rowKey="#{inventario.idInventario}"
+                selection="#{InventarioBean.inventarioSeleccionado}" 
+                selectionMode="single">
+
+                <f:facet  name="header">  
+                    Inventario de la Clinica 
+                </f:facet>
+
+                <p:column headerText="Nombre">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{inventario.nombre}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{inventario.nombre}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Tipo">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{inventario.tipo}" />
+                        </f:facet>
+                        <f:facet name="input">
+                            <p:inputText value="#{inventario.tipo}" />
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Cantidad Actual">
+                    <p:cellEditor>
+                        <f:facet name="output">
+                            <h:outputText value="#{inventario.cantidadActual}" >
+                                <f:converter converterId="javax.faces.Integer"/>
+                            </h:outputText>
+                        </f:facet>
+                            <f:facet name="input">
+                            <p:inputText readonly="true" value="#{inventario.cantidadActual}">
+                                <f:converter converterId="javax.faces.Integer"/>
+                            </p:inputText>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <f:facet name="footer">
+                    <p:commandButton value="Regresar" action="Index" />
+                    <p:spacer height="5px;"/>
+                    <p:commandButton value="Agregar" actionListener="#{InventarioBean.reiniciarInventarioSeleccionado}" oncomplete="PF('personaDialogo').show();" update="inventarios">
+                        <p:ajax event="dialogReturn" update="inventarios"/>
+                    </p:commandButton>
+                </f:facet>
+
+                <p:column headerText="Opciones" style="width:50px">
+                    <p:rowEditor>
+                    </p:rowEditor>
+                </p:column>
+
+                <p:ajax event="rowEdit" listener="#{InventarioBean.editListener}">
+                </p:ajax>
+            </p:dataTable>
+
+
+
+            <p:contextMenu for="inventarios">
+                <p:menuitem value="Eliminar" update="inventarios" icon="ui-icon-close" actionListener="#{InventarioBean.eliminarProducto}" ajax="false"/>
+            </p:contextMenu>
+        </h:form>
+
+        <h:form id="dialogoForm" prependId="false">
+            <p:dialog header="Agregar Persona" widgetVar="personaDialogo" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                <p:outputPanel id="personaDetalle" style="text-align:center;">
+                    <p:panelGrid  columns="2" columnClasses="label,value">
+                        <h:outputText value="Nombre del Producto" />
+                        <h:inputText value="#{InventarioBean.inventarioSeleccionado.nombre}" />
+
+                        <h:outputText value="Precio del producto" />
+                        <h:inputText value="#{InventarioBean.inventarioSeleccionado.precio}">
+                            <f:converter converterId="javax.faces.Double"/>
+                        </h:inputText>
+                        
+                        <h:outputText value="Tipo de producto" />
+                        <h:inputText value="#{InventarioBean.inventarioSeleccionado.tipo}" />
+                        
+                        <h:outputText value="Cantidad del producto" />
+                        <h:inputText value="#{InventarioBean.inventarioSeleccionado.cantidadActual}" >
+                            <f:converter converterId="javax.faces.Integer"/>
+                        </h:inputText>
+                        
+                        <f:facet name="footer">
+                            <h:commandButton value="Agregar" actionListener="#{InventarioBean.agregarProducto}" />
+                        </f:facet>
+
+                    </p:panelGrid>
+                </p:outputPanel>
+            </p:dialog>
+        </h:form>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    </h:body>
+
+</html>
+

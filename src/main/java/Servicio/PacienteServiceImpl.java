@@ -35,6 +35,9 @@ public class PacienteServiceImpl implements PacienteService, PacienteServiceRemo
 
         @Override
 	public void registrarPaciente(Paciente paciente) {
+                paciente.setNombre(upperCaseFirst(paciente.getNombre()));
+                paciente.setApellido(upperCaseFirst(paciente.getApellido()));
+                paciente.setDireccion(upperCaseFirst(paciente.getDireccion()));
 		pacienteFacade.create(paciente);
                 List<Paciente> pacientes = listarPacientes();
                 Paciente encontrado = new Paciente();
@@ -51,6 +54,12 @@ public class PacienteServiceImpl implements PacienteService, PacienteServiceRemo
                 historialFacade.create(historia);
 	}
 
+        private String upperCaseFirst(String val) {
+            char[] arr = val.toCharArray();
+            arr[0] = Character.toUpperCase(arr[0]);
+            return new String(arr);
+        }
+        
         @Override
 	public void modificarPaciente(Paciente paciente) {
 		pacienteFacade.edit(paciente);

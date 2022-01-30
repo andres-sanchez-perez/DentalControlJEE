@@ -15,6 +15,7 @@ public class InventarioImpl implements InventarioService, InventarioServiceRemot
         @Inject
 	private InventarioFacadeLocal inventarioFacade;
         
+       
 
         @Override
 	public List<Inventario> listarProductos() {
@@ -27,6 +28,12 @@ public class InventarioImpl implements InventarioService, InventarioServiceRemot
 	}
 
 
+        private String upperCaseFirst(String val) {
+            char[] arr = val.toCharArray();
+            arr[0] = Character.toUpperCase(arr[0]);
+            return new String(arr);
+        }
+        
         @Override
 	public void registrarProducto(Inventario inventario) {
             List<Inventario> inv = listarProductos();
@@ -44,7 +51,8 @@ public class InventarioImpl implements InventarioService, InventarioServiceRemot
                     i++;
                 }
             }while(seguro);
-            
+            inventario.setNombre(upperCaseFirst(inventario.getNombre()));
+            inventario.setTipo(upperCaseFirst(inventario.getTipo()));
             inventario.setCantidadMaxima(inventario.getCantidadActual());
             inventario.setCantidadMinima();
             inventario.setPrioridad();

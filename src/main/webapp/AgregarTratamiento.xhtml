@@ -76,9 +76,8 @@
                 <br/>
                 <p:selectOneMenu id="SeleccionaHistorial" converter="javax.faces.Integer" filter="true" filterMatchMode="startsWith" value="#{TratamientoBean.idHistorial}" class="form-control">
                     <f:selectItem class="dropdown-item" itemLabel="--Seleccione un historial--"/>
-                    <f:selectItems class="dropdown-item" value="#{TratamientoBean.historiales}" var="c" itemLabel="#{c.idPaciente.nombre}" itemValue="#{c.idHistorial}">
+                    <f:selectItems class="dropdown-item" value="#{TratamientoBean.historiales}" var="c" itemLabel="#{c.idPaciente.nombre} #{c.idPaciente.apellido} "   itemValue="#{c.idHistorial}">
                     </f:selectItems>
-                    
                 </p:selectOneMenu>
                 <h:outputLabel value="Descripcion del tratamiento"/>
                 <p:inputText class="form-control" value="#{TratamientoBean.tratamiento}">

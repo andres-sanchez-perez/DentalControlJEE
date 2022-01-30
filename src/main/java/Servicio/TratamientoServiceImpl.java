@@ -15,6 +15,13 @@ public class TratamientoServiceImpl implements TratamientoService, TratamientoSe
         @Inject
 	private TratamientoFacadeLocal tratamientoFacade;
 
+        private String upperCaseFirst(String val) {
+            char[] arr = val.toCharArray();
+            arr[0] = Character.toUpperCase(arr[0]);
+            return new String(arr);
+        }
+        
+        
         @Override
 	public List<Tratamiento> listarTratamientos() {
 		return tratamientoFacade.findAll();
@@ -42,7 +49,9 @@ public class TratamientoServiceImpl implements TratamientoService, TratamientoSe
 
         @Override
 	public void registrarTratamiento(Tratamiento tratamiento) {
-		tratamientoFacade.create(tratamiento);
+		tratamiento.setNombre(upperCaseFirst(tratamiento.getNombre()));
+                tratamiento.setTipo(upperCaseFirst(tratamiento.getTipo()));
+                tratamientoFacade.create(tratamiento);
 	}
 
         @Override
